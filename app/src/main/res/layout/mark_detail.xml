@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+                android:padding="3dp"
+              android:layout_height="wrap_content"
+    android:background="#EEE">
+
+  <TableLayout
+      android:layout_marginLeft="30dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <TableRow>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Mã số: "/>
+      <TextView
+          android:id="@+id/tvSId"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text="123456"/>
+    </TableRow>
+    <TableRow>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Số tín chỉ: "/>
+      <TextView
+          android:id="@+id/tvTC"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text="2"/>
+    </TableRow>
+    <TableRow>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="% Quá trình: "/>
+      <TextView
+          android:id="@+id/tvPerProcess"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text="50"/>
+    </TableRow>
+    <TableRow>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="% Thi: "/>
+      <TextView
+          android:id="@+id/tvPerExam"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text="50"/>
+    </TableRow>
+    <TableRow>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Điểm quá trình: "/>
+      <TextView
+          android:id="@+id/tvMarkProcess"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text="8"/>
+    </TableRow>
+    <TableRow>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Điểm thi: "/>
+      <TextView
+          android:id="@+id/tvMarkExam"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text="8"/>
+    </TableRow>
+  </TableLayout>
+</RelativeLayout>

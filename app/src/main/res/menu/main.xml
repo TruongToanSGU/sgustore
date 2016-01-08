@@ -6,4 +6,10 @@
       android:orderInCategory="100"
       android:title="@string/action_settings"
       app:showAsAction="never"/>
+  <item
+      android:id="@+id/action_go"
+      android:orderInCategory="99"
+      android:icon="@android:drawable/ic_media_play"
+      android:title="Tìm kiếm"
+      app:showAsAction="always"/>
 </menu>

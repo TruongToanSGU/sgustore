@@ -1,10 +1,11 @@
-package com.sgulab.thongtindaotao;
+package com.sgulab.thongtindaotao.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,9 +13,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+
+import com.sgulab.thongtindaotao.R;
+import com.sgulab.thongtindaotao.fragment.InfoFragment;
+import com.sgulab.thongtindaotao.fragment.MarkFragment;
+import com.sgulab.thongtindaotao.fragment.MarkTermFragment;
+import com.sgulab.thongtindaotao.fragment.SGUFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private SGUFragment markView;
+    private SGUFragment markTermView;
+    private SGUFragment infoView;
+
+    private SGUFragment currentFragment;
+
+    private EditText mMssv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +41,29 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        mMssv = (EditText) findViewById(R.id.ed_mssv);
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        getSupportFragmentManager().beginTransaction().hide(getSupportFragmentManager().findFragmentByTag("SimpleLoading")).commitAllowingStateLoss();
+
+        markView = new MarkFragment();
+        markTermView = new MarkTermFragment();
+        infoView = new InfoFragment();
+
+        showInfoFragment();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     @Override
@@ -70,6 +94,15 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_go) {
+            View view = this.getCurrentFocus();
+            if (view != null) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+            currentFragment.onSearch(mMssv.getText().toString());
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -80,10 +113,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+        if (id == R.id.nav_mark_all) {
+            showMarkFragment();
+        } else if (id == R.id.nav_mark_by_term) {
+            showMarkTermFragment();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -97,5 +130,29 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showMarkFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_content, markView);
+        transaction.commitAllowingStateLoss();
+        currentFragment = markView;
+        currentFragment.onShow(mMssv.getText().toString());
+    }
+
+    private void showMarkTermFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_content, markTermView);
+        transaction.commitAllowingStateLoss();
+        currentFragment = markTermView;
+        currentFragment.onShow(mMssv.getText().toString());
+    }
+
+    private void showInfoFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_content, infoView);
+        transaction.commitAllowingStateLoss();
+        currentFragment = infoView;
+        currentFragment.onShow(mMssv.getText().toString());
     }
 }

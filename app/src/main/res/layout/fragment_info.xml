@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/sth"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+  <WebView
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="0"
+      android:id="@+id/webView"/>
+
+  <TableLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <TableRow>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Mã sinh viên: "/>
+
+      <TextView
+          android:id="@+id/tvInfoMssv"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text=""/>
+    </TableRow>
+
+    <TableRow>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Tên sinh viên: "/>
+
+      <TextView
+          android:id="@+id/tvInfoTen"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text=""/>
+    </TableRow>
+
+    <TableRow>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Ngày sinh: "/>
+
+      <TextView
+          android:id="@+id/tvInfoNs"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text=""/>
+    </TableRow>
+
+    <TableRow>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Lớp"/>
+
+      <TextView
+          android:id="@+id/tvInfoLop"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text=""/>
+    </TableRow>
+
+    <TableRow>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Ngành: "/>
+
+      <TextView
+          android:id="@+id/tvInfoNganh"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text=""/>
+    </TableRow>
+
+    <TableRow>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Khoa: "/>
+
+      <TextView
+          android:id="@+id/tvInfoKhoa"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text=""/>
+    </TableRow>
+
+    <TableRow>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Hệ đào tạo: "/>
+
+      <TextView
+          android:id="@+id/tvInfoDt"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text=""/>
+    </TableRow>
+
+    <TableRow>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Niên khóa: "/>
+
+      <TextView
+          android:id="@+id/tvInfoNK"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text=""/>
+    </TableRow>
+
+    <TableRow>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="1"
+          android:text="Cố vấn học tập: "/>
+
+      <TextView
+          android:id="@+id/tvInfoCVHT"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_column="2"
+          android:text=""/>
+    </TableRow>
+  </TableLayout>
+</LinearLayout>

@@ -23,7 +23,7 @@ import com.sgulab.thongtindaotao.fragment.MarkFragment;
 import com.sgulab.thongtindaotao.fragment.MarkTermFragment;
 import com.sgulab.thongtindaotao.fragment.SGUFragment;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SGUFragment markView;

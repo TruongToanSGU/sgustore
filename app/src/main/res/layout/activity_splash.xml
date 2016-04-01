@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  android:orientation="vertical"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:background="@color/colorPrimary"
+  android:layout_height="match_parent">
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1">
+    <ImageView
+      android:layout_width="180dp"
+      android:layout_height="180dp"
+      android:id="@+id/imageView2"
+      android:src="@drawable/sgu_logo"
+      android:layout_centerVertical="true"
+      android:layout_centerHorizontal="true"/>
+  </RelativeLayout>
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:paddingTop="1dp"
+    android:layout_marginTop="50dp"
+    android:background="@color/colorWhite"
+    android:layout_height="50dp">
+
+    <Button
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:background="@drawable/button_primary"
+      android:text="Account"
+      android:textColor="@color/colorWhite"
+      android:layout_marginRight="1dp"
+      android:layout_weight="1"/>
+
+    <Button
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:background="@drawable/button_primary"
+      android:textColor="@color/colorWhite"
+      android:text="Guest"
+      android:layout_weight="1"/>
+
+  </LinearLayout>
+</LinearLayout>

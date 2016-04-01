@@ -1,4 +1,4 @@
-package com.sgulab.thongtindaotao.objects;
+package com.sgulab.thongtindaotao.models;
 
 import java.io.Serializable;
 

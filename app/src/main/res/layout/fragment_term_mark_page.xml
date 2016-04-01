@@ -1,145 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
   <WebView
-      android:id="@+id/webView"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"/>
+    android:id="@+id/webView"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"/>
 
   <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_below="@id/webView">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/webView">
 
     <LinearLayout
-        android:padding="10dp"
-        android:id="@+id/sth"
-        android:background="@drawable/pattern1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+      android:id="@+id/sth"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/pattern1"
+      android:padding="10dp">
+
       <TableLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <TableRow>
+
           <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="1"
-              android:text="Điểm trung bình học kỳ hệ 10: "/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="Điểm trung bình học kỳ hệ 10: "/>
+
           <TextView
-              android:id="@+id/tvAvg10"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="2"
-              android:text=""/>
+            android:id="@+id/tvAvg10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text=""/>
         </TableRow>
+
         <TableRow>
+
           <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="1"
-              android:text="Điểm trung bình học kỳ hệ 4: "/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="Điểm trung bình học kỳ hệ 4: "/>
+
           <TextView
-              android:id="@+id/tvAvg4"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="2"
-              android:text=""/>
+            android:id="@+id/tvAvg4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text=""/>
         </TableRow>
+
         <TableRow>
+
           <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="1"
-              android:text="Điểm trung bình tích lũy: "/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="Điểm trung bình tích lũy: "/>
+
           <TextView
-              android:id="@+id/tvAllAvg10"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="2"
-              android:text=""/>
+            android:id="@+id/tvAllAvg10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text=""/>
         </TableRow>
+
         <TableRow>
+
           <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="1"
-              android:text="Điểm trung bình tích lũy (hệ 4): "/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="Điểm trung bình tích lũy (hệ 4): "/>
+
           <TextView
-              android:id="@+id/tvAllAvg4"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="2"
-              android:text=""/>
+            android:id="@+id/tvAllAvg4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text=""/>
         </TableRow>
+
         <TableRow>
+
           <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="1"
-              android:text="Số tín chỉ đạt: "/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="Số tín chỉ đạt: "/>
+
           <TextView
-              android:id="@+id/tvPassedTc"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="2"
-              android:text=""/>
+            android:id="@+id/tvPassedTc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text=""/>
         </TableRow>
+
         <TableRow>
+
           <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="1"
-              android:text="Số tín chỉ tích lũy: "/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="Số tín chỉ tích lũy: "/>
+
           <TextView
-              android:id="@+id/tvAllPassedTc"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="2"
-              android:text=""/>
+            android:id="@+id/tvAllPassedTc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text=""/>
         </TableRow>
+
         <TableRow>
+
           <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="1"
-              android:text="Điểm Trung Bình Rèn Luyện HK: "/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="Điểm Trung Bình Rèn Luyện HK: "/>
+
           <TextView
-              android:id="@+id/tvAvgConduct"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="2"
-              android:text=""/>
+            android:id="@+id/tvAvgConduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text=""/>
         </TableRow>
+
         <TableRow>
+
           <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="1"
-              android:text="Phân Loại ĐTBRL HK: "/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="Phân Loại ĐTBRL HK: "/>
+
           <TextView
-              android:id="@+id/tvConductType"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_column="2"
-              android:text=""/>
+            android:id="@+id/tvConductType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text=""/>
         </TableRow>
       </TableLayout>
     </LinearLayout>
 
+    <View
+      android:id="@+id/line"
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="@color/colorPrimary"
+      android:layout_below="@+id/sth"/>
+
     <ExpandableListView
-        android:layout_below="@+id/sth"
-        android:id="@+id/list_diem"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+      android:id="@+id/list_diem"
+      android:background="@color/colorWhite"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@+id/line"/>
   </RelativeLayout>
 </RelativeLayout>

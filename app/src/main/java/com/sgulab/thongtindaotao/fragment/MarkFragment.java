@@ -2,7 +2,6 @@ package com.sgulab.thongtindaotao.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +9,12 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
 
 import com.sgulab.thongtindaotao.R;
 import com.sgulab.thongtindaotao.adapters.MarkAdapter;
-import com.sgulab.thongtindaotao.objects.MarkSubject;
-import com.sgulab.thongtindaotao.objects.MarkSubjectDetail;
-import com.sgulab.thongtindaotao.utils.Constant;
+import com.sgulab.thongtindaotao.models.MarkSubject;
+import com.sgulab.thongtindaotao.models.MarkSubjectDetail;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -37,8 +33,6 @@ public class MarkFragment extends SGUFragment {
     private ArrayList<Object> childs;
     private AtomicInteger step = new AtomicInteger();
 
-    private Fragment loadingFragment;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +46,6 @@ public class MarkFragment extends SGUFragment {
         webView = (WebView) view.findViewById(R.id.webView);
         listMark = (ExpandableListView) view.findViewById(R.id.list_diem);
 
-        loadingFragment = getFragmentManager().findFragmentByTag("SimpleLoading");
         groups = new ArrayList<>();
         childs = new ArrayList<>();
         adapter = new MarkAdapter(getActivity(), groups, childs);
@@ -64,7 +57,6 @@ public class MarkFragment extends SGUFragment {
         webView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
 
         step.set(0);
-        getFragmentManager().beginTransaction().show(loadingFragment).commitAllowingStateLoss();
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
     }
 
@@ -72,7 +64,6 @@ public class MarkFragment extends SGUFragment {
     public void onSearch(String title) {
         super.onSearch(title);
         step.set(0);
-        getFragmentManager().beginTransaction().show(loadingFragment).commitAllowingStateLoss();
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
     }
 
@@ -163,7 +154,6 @@ public class MarkFragment extends SGUFragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    getFragmentManager().beginTransaction().hide(loadingFragment).commitAllowingStateLoss();
                     adapter.notifyDataSetChanged();
                 }
             });

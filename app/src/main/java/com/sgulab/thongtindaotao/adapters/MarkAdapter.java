@@ -8,8 +8,8 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.sgulab.thongtindaotao.R;
-import com.sgulab.thongtindaotao.objects.MarkSubject;
-import com.sgulab.thongtindaotao.objects.MarkSubjectDetail;
+import com.sgulab.thongtindaotao.models.MarkSubject;
+import com.sgulab.thongtindaotao.models.MarkSubjectDetail;
 
 import java.util.ArrayList;
 

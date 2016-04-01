@@ -1,4 +1,4 @@
-package com.sgulab.thongtindaotao.objects;
+package com.sgulab.thongtindaotao.models;
 
 public class SvInfo {
     private String id;

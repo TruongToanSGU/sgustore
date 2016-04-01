@@ -2,29 +2,20 @@ package com.sgulab.thongtindaotao.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
-import android.widget.ExpandableListView;
 
 import com.sgulab.thongtindaotao.R;
-import com.sgulab.thongtindaotao.adapters.MarkAdapter;
 import com.sgulab.thongtindaotao.adapters.ScreenSlidePagerAdapter;
-import com.sgulab.thongtindaotao.objects.MarkSubject;
-import com.sgulab.thongtindaotao.objects.MarkSubjectDetail;
-import com.sgulab.thongtindaotao.objects.MarkTerm;
-import com.sgulab.thongtindaotao.utils.Constant;
+import com.sgulab.thongtindaotao.models.MarkSubject;
+import com.sgulab.thongtindaotao.models.MarkSubjectDetail;
+import com.sgulab.thongtindaotao.models.MarkTerm;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -39,8 +30,6 @@ public class MarkTermFragment extends SGUFragment {
 
     private WebView webView;
     private AtomicInteger step = new AtomicInteger();
-
-    private Fragment loadingFragment;
 
     private ViewPager mPager;
     private ScreenSlidePagerAdapter mPagerAdapter;
@@ -63,14 +52,11 @@ public class MarkTermFragment extends SGUFragment {
         mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager(), terms);
         mPager.setAdapter(mPagerAdapter);
 
-        loadingFragment = getFragmentManager().findFragmentByTag("SimpleLoading");
-
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         webView.setWebViewClient(new HelloWebViewClient());
         webView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
-        getFragmentManager().beginTransaction().show(loadingFragment).commitAllowingStateLoss();
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
     }
 
@@ -78,7 +64,6 @@ public class MarkTermFragment extends SGUFragment {
     public void onSearch(String title) {
         super.onSearch(title);
         step.set(0);
-        getFragmentManager().beginTransaction().show(loadingFragment).commitAllowingStateLoss();
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
     }
 
@@ -244,7 +229,6 @@ public class MarkTermFragment extends SGUFragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    getFragmentManager().beginTransaction().hide(loadingFragment).commitAllowingStateLoss();
                     mPagerAdapter.notifyDataSetChanged();
                 }
             });

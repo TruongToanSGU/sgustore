@@ -2,14 +2,10 @@ package com.sgulab.thongtindaotao.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.SparseArray;
 
-import com.sgulab.thongtindaotao.fragment.MarkTermFragment;
 import com.sgulab.thongtindaotao.fragment.MarkTermPageFragment;
-import com.sgulab.thongtindaotao.objects.MarkSubject;
-import com.sgulab.thongtindaotao.objects.MarkTerm;
+import com.sgulab.thongtindaotao.models.MarkTerm;
 
 import java.util.List;
 

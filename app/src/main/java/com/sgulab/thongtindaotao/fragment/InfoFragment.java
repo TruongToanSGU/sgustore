@@ -2,7 +2,6 @@ package com.sgulab.thongtindaotao.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,29 +9,20 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.sgulab.thongtindaotao.R;
-import com.sgulab.thongtindaotao.adapters.MarkAdapter;
-import com.sgulab.thongtindaotao.objects.MarkSubject;
-import com.sgulab.thongtindaotao.objects.MarkSubjectDetail;
-import com.sgulab.thongtindaotao.objects.SvInfo;
+import com.sgulab.thongtindaotao.models.SvInfo;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class InfoFragment extends SGUFragment {
 
     private WebView webView;
     private AtomicInteger step = new AtomicInteger();
-
-    private Fragment loadingFragment;
 
     private TextView tvInfoMssv;
     private TextView tvInfoTen;
@@ -66,14 +56,12 @@ public class InfoFragment extends SGUFragment {
         tvInfoHDT = (TextView) view.findViewById(R.id.tvInfoDt);
         tvInfoCVHT = (TextView) view.findViewById(R.id.tvInfoCVHT);
 
-        loadingFragment = getFragmentManager().findFragmentByTag("SimpleLoading");
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new HelloWebViewClient());
         webView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
 
         step.set(0);
-        getFragmentManager().beginTransaction().show(loadingFragment).commitAllowingStateLoss();
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
     }
 
@@ -81,7 +69,6 @@ public class InfoFragment extends SGUFragment {
     public void onSearch(String title) {
         super.onSearch(title);
         step.set(0);
-        getFragmentManager().beginTransaction().show(loadingFragment).commitAllowingStateLoss();
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
     }
 
@@ -159,7 +146,6 @@ public class InfoFragment extends SGUFragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    getFragmentManager().beginTransaction().hide(loadingFragment).commitAllowingStateLoss();
                     showSvInfo(svInfo);
                 }
             });

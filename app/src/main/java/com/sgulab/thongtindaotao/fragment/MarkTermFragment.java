@@ -1,5 +1,6 @@
 package com.sgulab.thongtindaotao.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -48,6 +49,8 @@ public class MarkTermFragment extends SGUFragment {
         webView = (WebView) view.findViewById(R.id.webView);
         mPager = (ViewPager) view.findViewById(R.id.pager);
 
+        setUpLoading();
+
         terms = new ArrayList<>();
         mPagerAdapter = new ScreenSlidePagerAdapter(getFragmentManager(), terms);
         mPager.setAdapter(mPagerAdapter);
@@ -58,6 +61,7 @@ public class MarkTermFragment extends SGUFragment {
         webView.setWebViewClient(new HelloWebViewClient());
         webView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
+        showLoading();
     }
 
     @Override
@@ -65,6 +69,7 @@ public class MarkTermFragment extends SGUFragment {
         super.onSearch(title);
         step.set(0);
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
+        showLoading();
     }
 
     private class HelloWebViewClient extends WebViewClient {
@@ -77,6 +82,8 @@ public class MarkTermFragment extends SGUFragment {
         @Override
         public void onPageFinished(WebView view, String url)
         {
+            if (!isRequesting.get()) return;
+
             switch (step.getAndIncrement()) {
                 case 0:
                     webView.loadUrl("javascript:(function(){" +
@@ -98,6 +105,8 @@ public class MarkTermFragment extends SGUFragment {
         @JavascriptInterface
         public void processHTML(String html)
         {
+            if (!isRequesting.get()) return;
+
             terms.clear();
             getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -229,6 +238,7 @@ public class MarkTermFragment extends SGUFragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    hideLoading();
                     mPagerAdapter.notifyDataSetChanged();
                 }
             });

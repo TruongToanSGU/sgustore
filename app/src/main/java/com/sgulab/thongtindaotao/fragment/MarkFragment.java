@@ -1,5 +1,6 @@
 package com.sgulab.thongtindaotao.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -46,6 +47,8 @@ public class MarkFragment extends SGUFragment {
         webView = (WebView) view.findViewById(R.id.webView);
         listMark = (ExpandableListView) view.findViewById(R.id.list_diem);
 
+        setUpLoading();
+
         groups = new ArrayList<>();
         childs = new ArrayList<>();
         adapter = new MarkAdapter(getActivity(), groups, childs);
@@ -58,6 +61,7 @@ public class MarkFragment extends SGUFragment {
 
         step.set(0);
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
+        showLoading();
     }
 
     @Override
@@ -65,6 +69,7 @@ public class MarkFragment extends SGUFragment {
         super.onSearch(title);
         step.set(0);
         webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
+        showLoading();
     }
 
     private class HelloWebViewClient extends WebViewClient {
@@ -77,6 +82,8 @@ public class MarkFragment extends SGUFragment {
         @Override
         public void onPageFinished(WebView view, String url)
         {
+            if (!isRequesting.get()) return;
+
             switch (step.getAndIncrement()) {
                 case 0:
                     webView.loadUrl("javascript:(function(){" +
@@ -98,6 +105,8 @@ public class MarkFragment extends SGUFragment {
         @JavascriptInterface
         public void processHTML(String html)
         {
+            if (!isRequesting.get()) return;
+
             groups.clear();
             childs.clear();
             Document document = Jsoup.parse(html);
@@ -154,9 +163,11 @@ public class MarkFragment extends SGUFragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    hideLoading();
                     adapter.notifyDataSetChanged();
                 }
             });
+
         }
     }
 }

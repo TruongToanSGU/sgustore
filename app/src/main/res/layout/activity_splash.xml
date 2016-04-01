@@ -27,6 +27,7 @@
     android:layout_height="50dp">
 
     <Button
+      android:id="@+id/button_splash_account"
       android:layout_width="0dp"
       android:layout_height="match_parent"
       android:background="@drawable/button_primary"
@@ -36,6 +37,7 @@
       android:layout_weight="1"/>
 
     <Button
+      android:id="@+id/button_splash_guest"
       android:layout_width="0dp"
       android:layout_height="match_parent"
       android:background="@drawable/button_primary"

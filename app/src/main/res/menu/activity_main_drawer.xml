@@ -1,45 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <item android:title="Xem điểm">
-    <menu>
-      <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_mark_all"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Tất cả"/>
-        <item
-            android:id="@+id/nav_mark_by_term"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Theo học kỳ"/>
-      </group>
-    </menu>
-  </item>
+    <item android:title="Thông tin">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_info"
+                    android:icon="@android:drawable/ic_input_add"
+                    android:title="Thông tin cá nhân"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Xem điểm">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_mark_all"
+                    android:icon="@android:drawable/ic_input_add"
+                    android:title="Tất cả"/>
+                <item
+                    android:id="@+id/nav_mark_by_term"
+                    android:icon="@android:drawable/ic_input_add"
+                    android:title="Theo học kỳ"/>
+            </group>
+        </menu>
+    </item>
   <item android:title="Xem TKB">
     <menu>
       <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow"/>
+            android:id="@+id/nav_tkb_self"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Theo học kỳ cá nhân"/>
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools"/>
+            android:id="@+id/nav_tkb_week"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Theo tuần"/>
       </group>
     </menu>
   </item>
 
-  <item android:title="Communicate">
+  <item android:title="Cài đặt">
     <menu>
       <item
-          android:id="@+id/nav_share"
-          android:icon="@drawable/ic_menu_share"
-          android:title="Share"/>
-      <item
-          android:id="@+id/nav_send"
-          android:icon="@drawable/ic_menu_send"
-          android:title="Send"/>
+          android:id="@+id/nav_logout"
+          android:icon="@android:drawable/ic_lock_power_off"
+          android:title="Đăng xuất"/>
     </menu>
   </item>
 

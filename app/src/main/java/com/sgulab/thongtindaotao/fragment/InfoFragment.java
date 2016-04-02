@@ -33,6 +33,7 @@ public class InfoFragment extends SGUFragment {
     private TextView tvInfoCVHT;
     private TextView tvInfoHDT;
     private TextView tvInfoLop;
+    private TextView tvInfoNoiSinh;
 
     @Nullable
     @Override
@@ -55,6 +56,7 @@ public class InfoFragment extends SGUFragment {
         tvInfoNs = (TextView) view.findViewById(R.id.tvInfoNs);
         tvInfoHDT = (TextView) view.findViewById(R.id.tvInfoDt);
         tvInfoCVHT = (TextView) view.findViewById(R.id.tvInfoCVHT);
+        tvInfoNoiSinh = (TextView) view.findViewById(R.id.tvInfoNoisinh);
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -62,14 +64,28 @@ public class InfoFragment extends SGUFragment {
         webView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
 
         step.set(0);
-        webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
+        showLoading();
+        webView.loadUrl(getUrl());
+    }
+
+    public String getUrl() {
+        String url;
+        if (sharedPreferences.getSharedPrefLoginUsingAccount()) {
+            url = "http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi";
+        } else {
+            url = "http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV();
+        }
+        return url;
     }
 
     @Override
     public void onSearch(String title) {
-        super.onSearch(title);
+        if (!sharedPreferences.getSharedPrefLoginUsingAccount()) {
+            super.onSearch(title);
+        }
         step.set(0);
-        webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
+        showLoading();
+        webView.loadUrl(getUrl());
     }
 
     private class HelloWebViewClient extends WebViewClient {
@@ -113,6 +129,11 @@ public class InfoFragment extends SGUFragment {
                 e.printStackTrace();
             }
             try {
+                svInfo.setAddress(document.getElementById("ctl00_ContentPlaceHolder1_ctl00_ucThongTinSV_lblNoiSinh").html());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
                 svInfo.setClassName(document.getElementById("ctl00_ContentPlaceHolder1_ctl00_ucThongTinSV_lblLop").html());
             } catch (Exception e) {
                 e.printStackTrace();
@@ -146,6 +167,7 @@ public class InfoFragment extends SGUFragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    hideLoading();
                     showSvInfo(svInfo);
                 }
             });
@@ -162,5 +184,6 @@ public class InfoFragment extends SGUFragment {
         tvInfoNK.setText(svInfo.getAcademicYear());
         tvInfoHDT.setText(svInfo.getTrainingSystem());
         tvInfoCVHT.setText(svInfo.getAcademicAdvisors());
+        tvInfoNoiSinh.setText(svInfo.getAddress());
     }
 }

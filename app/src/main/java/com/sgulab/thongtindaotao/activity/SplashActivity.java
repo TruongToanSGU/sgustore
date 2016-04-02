@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.CookieManager;
 import android.widget.Button;
 
 import com.sgulab.thongtindaotao.R;
@@ -31,6 +32,8 @@ public class SplashActivity extends BaseActivity {
     btGuest.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        sharedPreferences.setSharedPrefLoginUsingAccount(false);
+        CookieManager.getInstance().removeAllCookie();
         startActivity(new Intent(SplashActivity.this, MainActivity.class));
         finish();
       }

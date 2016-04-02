@@ -60,15 +60,29 @@ public class MarkTermFragment extends SGUFragment {
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         webView.setWebViewClient(new HelloWebViewClient());
         webView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
-        webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
+
+        step.set(0);
+        webView.loadUrl(getUrl());
         showLoading();
+    }
+
+    public String getUrl() {
+        String url;
+        if (sharedPreferences.getSharedPrefLoginUsingAccount()) {
+            url = "http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi";
+        } else {
+            url = "http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV();
+        }
+        return url;
     }
 
     @Override
     public void onSearch(String title) {
-        super.onSearch(title);
+        if (!sharedPreferences.getSharedPrefLoginUsingAccount()) {
+            super.onSearch(title);
+        }
         step.set(0);
-        webView.loadUrl("http://thongtindaotao.sgu.edu.vn/Default.aspx?page=xemdiemthi&id=" + getCurrentMSSV());
+        webView.loadUrl(getUrl());
         showLoading();
     }
 

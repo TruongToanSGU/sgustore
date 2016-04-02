@@ -8,7 +8,7 @@ import android.view.View;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class SGUFragment extends Fragment {
+public abstract class SGUFragment extends BaseFragment {
     private String currentMSSV;
 
     protected AtomicBoolean isRequesting = new AtomicBoolean(false);

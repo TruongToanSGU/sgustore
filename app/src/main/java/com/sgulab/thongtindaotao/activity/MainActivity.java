@@ -57,7 +57,15 @@ public class MainActivity extends BaseActivity
         markTermView = new MarkTermFragment();
         infoView = new InfoFragment();
 
+        configUserType();
         showInfoFragment();
+    }
+
+    private void configUserType() {
+        if (sharedPreferences.getSharedPrefLoginUsingAccount()) {
+            mMssv.setFocusable(false);
+            mMssv.setText(sharedPreferences.getSharedPrefAccountName());
+        }
     }
 
     @Override
@@ -110,14 +118,8 @@ public class MainActivity extends BaseActivity
             showMarkFragment();
         } else if (id == R.id.nav_mark_by_term) {
             showMarkTermFragment();
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_info) {
+            showInfoFragment();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -4,6 +4,7 @@ public class SvInfo {
     private String id;
     private String name;
     private String birthday;
+    private String address;
     private String className;
     private String disciplines;
     private String majors;
@@ -81,6 +82,14 @@ public class SvInfo {
 
     public void setAcademicAdvisors(String academicAdvisors) {
         this.academicAdvisors = academicAdvisors;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
 

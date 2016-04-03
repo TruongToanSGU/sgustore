@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/webView"/>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="50dp">
+
+    </Spinner>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/spinner"
+        android:orientation="horizontal"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="100dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:background="@color/colorPrimary"
+                android:text=""/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 2"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 3"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 4"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 5"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 6"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 7"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 8"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 9"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 10"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 11"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 12"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 13"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 14"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGray"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Tiết 15"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" >
+            <android.support.v4.view.PagerTitleStrip
+                android:id="@+id/pager_title_strip"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="top"
+                android:background="@color/colorPrimary"
+                android:textColor="#fff" />
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
+</RelativeLayout>

@@ -22,6 +22,7 @@ import com.sgulab.thongtindaotao.fragment.InfoFragment;
 import com.sgulab.thongtindaotao.fragment.MarkFragment;
 import com.sgulab.thongtindaotao.fragment.MarkTermFragment;
 import com.sgulab.thongtindaotao.fragment.SGUFragment;
+import com.sgulab.thongtindaotao.fragment.WeekScheduleFragment;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity
     private SGUFragment markView;
     private SGUFragment markTermView;
     private SGUFragment infoView;
+    private SGUFragment weekScheduleView;
 
     private SGUFragment currentFragment;
 
@@ -56,6 +58,7 @@ public class MainActivity extends BaseActivity
         markView = new MarkFragment();
         markTermView = new MarkTermFragment();
         infoView = new InfoFragment();
+        weekScheduleView = new WeekScheduleFragment();
 
         configUserType();
         showInfoFragment();
@@ -120,6 +123,8 @@ public class MainActivity extends BaseActivity
             showMarkTermFragment();
         } else if (id == R.id.nav_info) {
             showInfoFragment();
+        }else if (id == R.id.nav_tkb_week) {
+            showWeekScheduleFragment();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -148,6 +153,14 @@ public class MainActivity extends BaseActivity
         transaction.replace(R.id.fragment_content, infoView);
         transaction.commitAllowingStateLoss();
         currentFragment = infoView;
+        currentFragment.onShow(mMssv.getText().toString());
+    }
+
+    private void showWeekScheduleFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_content, weekScheduleView);
+        transaction.commitAllowingStateLoss();
+        currentFragment = weekScheduleView;
         currentFragment.onShow(mMssv.getText().toString());
     }
 }

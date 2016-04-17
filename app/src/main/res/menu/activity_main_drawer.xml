@@ -6,7 +6,6 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_info"
-                    android:icon="@android:drawable/ic_input_add"
                     android:title="Thông tin cá nhân"/>
             </group>
         </menu>
@@ -17,11 +16,9 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_mark_all"
-                    android:icon="@android:drawable/ic_input_add"
                     android:title="Tất cả"/>
                 <item
                     android:id="@+id/nav_mark_by_term"
-                    android:icon="@android:drawable/ic_input_add"
                     android:title="Theo học kỳ"/>
             </group>
         </menu>
@@ -31,11 +28,9 @@
       <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_tkb_self"
-            android:icon="@android:drawable/ic_input_add"
             android:title="Theo học kỳ cá nhân"/>
         <item
             android:id="@+id/nav_tkb_week"
-            android:icon="@android:drawable/ic_input_add"
             android:title="Theo tuần"/>
       </group>
     </menu>
@@ -45,7 +40,6 @@
     <menu>
       <item
           android:id="@+id/nav_logout"
-          android:icon="@android:drawable/ic_lock_power_off"
           android:title="Đăng xuất"/>
     </menu>
   </item>

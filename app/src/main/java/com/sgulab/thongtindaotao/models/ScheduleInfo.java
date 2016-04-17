@@ -1,6 +1,8 @@
 package com.sgulab.thongtindaotao.models;
 
-public class ScheduleInfo {
+import java.io.Serializable;
+
+public class ScheduleInfo implements Serializable {
     private String id;
     private int group;
     private String name;
@@ -9,6 +11,9 @@ public class ScheduleInfo {
     private int sessionBegin;
     private int sessionDuration;
     private String className;
+    private String teacher;
+    private String dateBegin;
+    private String dateEnd;
 
     public String getId() {
         return id;
@@ -72,5 +77,29 @@ public class ScheduleInfo {
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+    public String getDateBegin() {
+        return dateBegin;
+    }
+
+    public void setDateBegin(String dateBegin) {
+        this.dateBegin = dateBegin;
+    }
+
+    public String getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(String dateEnd) {
+        this.dateEnd = dateEnd;
     }
 }

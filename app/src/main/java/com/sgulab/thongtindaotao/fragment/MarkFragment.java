@@ -56,6 +56,7 @@ public class MarkFragment extends SGUFragment {
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
+        settings.setLoadsImagesAutomatically(false);
         webView.setWebViewClient(new HelloWebViewClient());
         webView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");
         step.set(0);

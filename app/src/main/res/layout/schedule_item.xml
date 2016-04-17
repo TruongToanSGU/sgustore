@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/schedule_item_bg"
+    android:layout_height="50dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="center_vertical"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_schedule_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:text="Tên môn học"/>
+        <TextView
+            android:id="@+id/tv_schedule_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:text="C.CSC"/>
+    </LinearLayout>
+
+</LinearLayout>

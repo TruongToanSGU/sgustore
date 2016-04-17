@@ -57,6 +57,7 @@ public class MarkTermFragment extends SGUFragment {
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
+        settings.setLoadsImagesAutomatically(false);
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         webView.setWebViewClient(new HelloWebViewClient());
         webView.addJavascriptInterface(new MyJavaScriptInterface(), "HTMLOUT");

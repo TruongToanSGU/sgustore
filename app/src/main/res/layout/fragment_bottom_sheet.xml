@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/colorLightGray">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="@dimen/schedule_text_size"
+                android:text="Mã môn học: "/>
+
+            <TextView
+                android:id="@+id/tv_schedule_detail_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="@dimen/schedule_text_size"
+                android:text=""/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="@dimen/schedule_text_size"
+                android:text="Tên môn học: "/>
+
+            <TextView
+                android:id="@+id/tv_schedule_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="@dimen/schedule_text_size"
+                android:text=""/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="@dimen/schedule_text_size"
+                android:text="Phòng: "/>
+
+            <TextView
+                android:id="@+id/tv_schedule_detail_room"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="@dimen/schedule_text_size"
+                android:text=""/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="@dimen/schedule_text_size"
+                android:text="Nhóm: "/>
+
+            <TextView
+                android:id="@+id/tv_schedule_detail_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="@dimen/schedule_text_size"
+                android:text=""/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="@dimen/schedule_text_size"
+                android:text="Thứ: "/>
+
+            <TextView
+                android:id="@+id/tv_schedule_detail_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="@dimen/schedule_text_size"
+                android:text=""/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="@dimen/schedule_text_size"
+                android:text="Tiết bắt đầu: "/>
+
+            <TextView
+                android:id="@+id/tv_schedule_detail_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="@dimen/schedule_text_size"
+                android:text=""/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="@dimen/schedule_text_size"
+                android:text="Số tiết: "/>
+
+            <TextView
+                android:id="@+id/tv_schedule_detail_dur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="@dimen/schedule_text_size"
+                android:text=""/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="@dimen/schedule_text_size"
+                android:text="Giảng viên: "/>
+
+            <TextView
+                android:id="@+id/tv_schedule_detail_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="@dimen/schedule_text_size"
+                android:text=""/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="@dimen/schedule_text_size"
+                android:text="Lớp: "/>
+
+            <TextView
+                android:id="@+id/tv_schedule_detail_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:textSize="@dimen/schedule_text_size"
+                android:text=""/>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

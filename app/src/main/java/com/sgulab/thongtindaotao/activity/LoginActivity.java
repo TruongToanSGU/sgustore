@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +25,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.sgulab.thongtindaotao.R;
+import com.sgulab.thongtindaotao.utils.CmUtils;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -65,6 +65,7 @@ public class LoginActivity extends BaseActivity{
 
     WebSettings settings = webView.getSettings();
     settings.setJavaScriptEnabled(true);
+    settings.setLoadsImagesAutomatically(false);
     webView.setWebViewClient(new HelloWebViewClient());
     webView.addJavascriptInterface(new MyJavaScriptInterface(new LoginHandler() {
       @Override
@@ -165,7 +166,7 @@ public class LoginActivity extends BaseActivity{
       runOnUiThread(new Runnable() {
         @Override
         public void run() {
-          if (!userLoginInfo.hasText()) {
+          if (userLoginInfo == null || !userLoginInfo.hasText()) {
             mLoginHandler.onFail();
           } else {
             String userName = userLoginInfo.html();
@@ -217,6 +218,8 @@ public class LoginActivity extends BaseActivity{
   }
 
   private void attemptLogin() {
+
+    if (!CmUtils.isOnline(context)) return;
 
     // Reset errors.
     mEmailView.setError(null);

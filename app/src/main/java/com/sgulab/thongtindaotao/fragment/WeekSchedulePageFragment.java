@@ -3,27 +3,26 @@ package com.sgulab.thongtindaotao.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sgulab.thongtindaotao.R;
-import com.sgulab.thongtindaotao.adapters.MarkAdapter;
-import com.sgulab.thongtindaotao.models.MarkSubject;
-import com.sgulab.thongtindaotao.models.MarkSubjectDetail;
-import com.sgulab.thongtindaotao.models.MarkTerm;
+import com.sgulab.thongtindaotao.models.ScheduleInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WeekSchedulePageFragment extends BaseFragment {
 
-    private ExpandableListView listMark;
-    private MarkAdapter adapter;
-    private ArrayList<MarkSubject> groups;
-    private ArrayList<Object> childs;
+    List<ScheduleInfo> infoList;
+
+    private final int MIN_SESSION = 1;
+    private final int MAX_SESSION = 13;
+    private int count;
 
     @Nullable
     @Override
@@ -34,41 +33,76 @@ public class WeekSchedulePageFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        listMark = (ExpandableListView) view.findViewById(R.id.list_diem);
-//        groups = new ArrayList<>();
-//        childs = new ArrayList<>();
-//        MarkTerm data = (MarkTerm) getArguments().getSerializable(TERM);
-//        List<MarkSubjectDetail> marks = data.getMarks();
-//        for (MarkSubjectDetail detail : marks) {
-//            groups.add(detail);
-//            ArrayList<MarkSubjectDetail> l = new ArrayList<>();
-//            l.add(detail);
-//            childs.add(l);
-//        }
-//        if (data.getTermAvg10() != 0) {
-//            ((TextView) view.findViewById(R.id.tvAvg10)).setText(data.getTermAvg10() + "");
-//            ((TextView) view.findViewById(R.id.tvAvg4)).setText(data.getTermAvg4() + "");
-//            ((TextView) view.findViewById(R.id.tvAllAvg10)).setText(data.getAllTermAvg10() + "");
-//            ((TextView) view.findViewById(R.id.tvAllAvg4)).setText(data.getAllTermAvg4() + "");
-//            ((TextView) view.findViewById(R.id.tvPassedTc)).setText(data.getPassedTc() + "");
-//            ((TextView) view.findViewById(R.id.tvAllPassedTc)).setText(data.getAllPassedTc() + "");
-//            ((TextView) view.findViewById(R.id.tvAvgConduct)).setText(data.getAvgConduct() + "");
-//            ((TextView) view.findViewById(R.id.tvConductType)).setText(data.getConductType() + "");
-//        }
-//        adapter = new MarkAdapter(getActivity(), groups, childs);
-//        listMark.setAdapter(adapter);
+
+        Bundle args = getArguments();
+
+        count = args.getInt(INFO_COUNT, 0);
+        if (infoList == null) {
+            infoList = new ArrayList<>();
+        } else {
+            infoList.clear();
+        }
+
+        for (int i = 0; i < count; i++) {
+            ScheduleInfo info = (ScheduleInfo) getArguments().getSerializable(INFO + i);
+            infoList.add(info);
+        }
+
+        if (infoList.size() == 0) return;
+        LinearLayout root = (LinearLayout) view.findViewById(R.id.root);
+        int idx = MIN_SESSION;
+        for (final ScheduleInfo info : infoList) {
+            View childBefore = new View(getActivity());
+            childBefore.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, info.getSessionBegin() - idx));
+            root.addView(childBefore);
+            idx += (info.getSessionBegin() - idx + 1);
+            View infoChild = getActivity().getLayoutInflater().inflate(R.layout.schedule_item, root, false);
+            infoChild.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, info.getSessionDuration()));
+            infoChild.setClickable(true);
+            infoChild.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new TBottomDialog(getContext(), info).show();
+                }
+            });
+            ScheduleHolder holder = new ScheduleHolder(infoChild);
+            holder.tvSubject.setText(info.getName());
+            holder.tvRoom.setText(info.getRoom());
+            root.addView(infoChild);
+            idx += info.getSessionDuration() - 1;
+        }
+        View childAfter = new View(getActivity());
+        childAfter.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0,
+                MAX_SESSION - (infoList.get(infoList.size() - 1).getSessionBegin() + infoList.get(infoList.size() - 1).getSessionDuration() - 1)));
+        root.addView(childAfter);
+        root.invalidate();
     }
 
-    public void update() {
-        if (adapter != null) adapter.notifyDataSetChanged();
-    }
-
-    public static final String TERM = "TERM";
-    public static Fragment newInstance(MarkTerm term) {
+    public static final String INFO = "INFO";
+    public static final String INFO_COUNT = "INFO_COUNT";
+    public static Fragment newInstance(List<ScheduleInfo> infos) {
         WeekSchedulePageFragment f = new WeekSchedulePageFragment();
         Bundle args = new Bundle();
-        args.putSerializable(TERM, term);
+        if (infos != null) {
+            Log.e("zzz", "New instance..." + infos.size());
+            for (int i = 0; i < infos.size(); i++) {
+                args.putSerializable(INFO + i, infos.get(i));
+            }
+
+            args.putInt(INFO_COUNT, infos.size());
+        }
+
         f.setArguments(args);
         return f;
+    }
+
+    private class ScheduleHolder {
+        private TextView tvSubject;
+        private TextView tvRoom;
+
+        public ScheduleHolder(View v) {
+            tvSubject = (TextView) v.findViewById(R.id.tv_schedule_subject);
+            tvRoom = (TextView) v.findViewById(R.id.tv_schedule_room);
+        }
     }
 }

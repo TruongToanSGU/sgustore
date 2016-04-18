@@ -2,14 +2,11 @@ package com.sgulab.thongtindaotao.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.sgulab.thongtindaotao.R;
+import com.sgulab.thongtindaotao.fragment.ExamFragment;
 import com.sgulab.thongtindaotao.fragment.FitFragment;
 import com.sgulab.thongtindaotao.fragment.InfoFragment;
 import com.sgulab.thongtindaotao.fragment.MarkFragment;
@@ -33,6 +31,7 @@ public class MainActivity extends BaseActivity
     private SGUFragment infoView;
     private SGUFragment weekScheduleView;
     private SGUFragment fitView;
+    private SGUFragment examView;
 
     private SGUFragment currentFragment;
 
@@ -62,6 +61,7 @@ public class MainActivity extends BaseActivity
         infoView = new InfoFragment();
         weekScheduleView = new WeekScheduleFragment();
         fitView = new FitFragment();
+        examView = new ExamFragment();
 
         configUserType();
         showInfoFragment();
@@ -128,8 +128,10 @@ public class MainActivity extends BaseActivity
             showInfoFragment();
         } else if (id == R.id.nav_tkb_week) {
             showWeekScheduleFragment();
-        }else if (id == R.id.nav_feed_fit) {
+        } else if (id == R.id.nav_feed_fit) {
             showFitView();
+        } else if (id == R.id.nav_exam) {
+            showExamFragment();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -171,6 +173,14 @@ public class MainActivity extends BaseActivity
     private void showWeekScheduleFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_content, weekScheduleView);
+        transaction.commitAllowingStateLoss();
+        currentFragment = weekScheduleView;
+        currentFragment.onShow(mMssv.getText().toString());
+    }
+
+    private void showExamFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_content, examView);
         transaction.commitAllowingStateLoss();
         currentFragment = weekScheduleView;
         currentFragment.onShow(mMssv.getText().toString());

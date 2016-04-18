@@ -35,6 +35,15 @@
             </group>
         </menu>
     </item>
+    <item android:title="Xem lịch thi">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_exam"
+                    android:title="Lịch thi cá nhân"/>
+            </group>
+        </menu>
+    </item>
     <item android:title="Tin tức khoa">
         <menu>
             <group android:checkableBehavior="single">
@@ -44,13 +53,12 @@
             </group>
         </menu>
     </item>
-
-  <item android:title="Cài đặt">
-    <menu>
-      <item
-          android:id="@+id/nav_logout"
-          android:title="Đăng xuất"/>
-    </menu>
-  </item>
+    <item android:title="Cài đặt">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:title="Đăng xuất"/>
+        </menu>
+    </item>
 
 </menu>

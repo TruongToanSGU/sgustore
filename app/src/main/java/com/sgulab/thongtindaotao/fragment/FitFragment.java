@@ -1,7 +1,12 @@
 package com.sgulab.thongtindaotao.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +14,11 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.sgulab.thongtindaotao.R;
 import com.sgulab.thongtindaotao.adapters.FitAdapter;
@@ -25,6 +34,7 @@ import java.util.List;
 
 public class FitFragment extends SGUFragment {
 
+    private final String BASE_URL = "http://fit.sgu.edu.vn";
     private final String URL = "http://fit.sgu.edu.vn/drupal/tb_sv";
     private WebView webView;
     private ListView listInfo;
@@ -32,6 +42,10 @@ public class FitFragment extends SGUFragment {
     private FitAdapter fitAdapter;
 
     private List<FitFeed> feeds;
+    private BottomSheetBehavior<View> mBottomSheetBehavior;
+    private TextView tvSummary;
+    private View bottomSheet;
+    private ImageButton btnWeb;
 
     @Nullable
     @Override
@@ -45,6 +59,12 @@ public class FitFragment extends SGUFragment {
 
         webView = (WebView) view.findViewById(R.id.webView);
         listInfo = (ListView) view.findViewById(R.id.info_feeds);
+        tvSummary = (TextView) view.findViewById(R.id.feed_summary);
+
+        bottomSheet = view.findViewById( R.id.bottom_sheet );
+        mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        btnWeb = (ImageButton) view.findViewById(R.id.button_action_web);
+
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -55,8 +75,32 @@ public class FitFragment extends SGUFragment {
         fitAdapter = new FitAdapter(getContext(), R.layout.fit_feed_item, feeds);
         listInfo.setAdapter(fitAdapter);
 
+        btnWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(btnWeb.getTag().toString())));
+            }
+        });
+
+        listInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                showFeedSummary(position);
+            }
+        });
+
         showLoading();
         webView.loadUrl(URL);
+    }
+
+    private void showFeedSummary(int position) {
+        if (mBottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        } else {
+            tvSummary.setText(Html.fromHtml(feeds.get(position).getSummary()));
+            btnWeb.setTag(feeds.get(position).getUrl());
+            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        }
     }
 
     @Override
@@ -97,6 +141,7 @@ public class FitFragment extends SGUFragment {
                 feed.setTitle(row.child(0).child(0).html());
                 feed.setDate(row.child(1).html().trim());
                 feed.setSummary(row.child(2).html());
+                feed.setUrl(BASE_URL + row.child(0).child(0).attr("href"));
                 feeds.add(feed);
             }
 

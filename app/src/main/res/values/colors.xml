@@ -7,5 +7,6 @@
   <color name="colorTransBG">#AAFFFFFF</color>
   <color name="colorWhite">#FFFFFF</color>
   <color name="colorLightGray">#DDDDDD</color>
+  <color name="colorLighterGray">#EEEEEEEE</color>
   <color name="colorPrimaryLighter">#0288BD</color>
 </resources>

@@ -23,18 +23,27 @@
             </group>
         </menu>
     </item>
-  <item android:title="Xem TKB">
-    <menu>
-      <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_tkb_self"
-            android:title="Theo học kỳ cá nhân"/>
-        <item
-            android:id="@+id/nav_tkb_week"
-            android:title="Theo tuần"/>
-      </group>
-    </menu>
-  </item>
+    <item android:title="Xem TKB">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_tkb_self"
+                    android:title="Theo học kỳ cá nhân"/>
+                <item
+                    android:id="@+id/nav_tkb_week"
+                    android:title="Theo tuần"/>
+            </group>
+        </menu>
+    </item>
+    <item android:title="Tin tức khoa">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_feed_fit"
+                    android:title="Công nghệ thông tin"/>
+            </group>
+        </menu>
+    </item>
 
   <item android:title="Cài đặt">
     <menu>

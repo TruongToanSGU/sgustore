@@ -18,6 +18,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.sgulab.thongtindaotao.R;
+import com.sgulab.thongtindaotao.fragment.FitFragment;
 import com.sgulab.thongtindaotao.fragment.InfoFragment;
 import com.sgulab.thongtindaotao.fragment.MarkFragment;
 import com.sgulab.thongtindaotao.fragment.MarkTermFragment;
@@ -31,6 +32,7 @@ public class MainActivity extends BaseActivity
     private SGUFragment markTermView;
     private SGUFragment infoView;
     private SGUFragment weekScheduleView;
+    private SGUFragment fitView;
 
     private SGUFragment currentFragment;
 
@@ -59,6 +61,7 @@ public class MainActivity extends BaseActivity
         markTermView = new MarkTermFragment();
         infoView = new InfoFragment();
         weekScheduleView = new WeekScheduleFragment();
+        fitView = new FitFragment();
 
         configUserType();
         showInfoFragment();
@@ -123,13 +126,22 @@ public class MainActivity extends BaseActivity
             showMarkTermFragment();
         } else if (id == R.id.nav_info) {
             showInfoFragment();
-        }else if (id == R.id.nav_tkb_week) {
+        } else if (id == R.id.nav_tkb_week) {
             showWeekScheduleFragment();
+        }else if (id == R.id.nav_feed_fit) {
+            showFitView();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showFitView() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_content, fitView);
+        transaction.commitAllowingStateLoss();
+        currentFragment = fitView;
     }
 
     private void showMarkFragment() {
